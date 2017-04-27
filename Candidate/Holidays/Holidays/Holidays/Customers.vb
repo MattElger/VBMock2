@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Public Class Customers
     Private Structure Customer
@@ -98,7 +98,7 @@ Public Class Customers
                 If Trim(Mid(CustomerDatas(i), 151, 50)) = txtAddress.Text Then countgot = countgot + 1 'Checking if any records match the record beign entered.
                 If Trim(Mid(CustomerDatas(i), 201, 50)) = txtPostcode.Text Then countgot = countgot + 1
                 If Trim(Mid(CustomerDatas(i), 251, 50)) = txtPhoneNumber.Text Then countgot = countgot + 1
-                If Trim(Mid(CustomerDatas(i), 301, 50)) = dtpDOB.Text Then countgot = countgot + 1
+                If Trim(Mid(CustomerDatas(i), 301, 50)) = dtpDOB.Value Then countgot = countgot + 1
                 If countgot = 6 Then
                     MsgBox("Record is already in database.") 'if there is a match the user is notified
                     Exit Sub
@@ -114,7 +114,7 @@ Public Class Customers
         CustomerData.Address = LSet(txtAddress.Text, 50)                      'Filling the structure with data.
         CustomerData.Postcode = LSet(txtPostcode.Text, 50)
         CustomerData.PhoneNumber = LSet(txtPhoneNumber.Text, 50)
-        CustomerData.DOB = LSet(dtpDOB.Text, 50)
+        CustomerData.DOB = LSet(dtpDOB.Value, 50)
 
         sw.WriteLine(CustomerData.ClientID & CustomerData.FName & CustomerData.LName & CustomerData.Address & CustomerData.Postcode & CustomerData.PhoneNumber & CustomerData.DOB) 'Outputing the data collected from the user into a file with padding so it can be understood later on in the program using the Trim Function.
         sw.Close()                                                                  'Always need to close afterwards
